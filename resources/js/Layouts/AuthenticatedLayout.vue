@@ -4,6 +4,7 @@ import { Link } from "@inertiajs/vue3";
 import MapMarkerOutlineIcon from "vue-material-design-icons/MapMarkerOutline.vue";
 import MenuDownIcon from "vue-material-design-icons/MenuDown.vue";
 import MagnifyIcon from "vue-material-design-icons/Magnify.vue";
+import CartMinusIcon from "vue-material-design-icons/CartMinus.vue";
 
 const showingNavigationDropdown = ref(false);
 </script>
@@ -64,6 +65,97 @@ const showingNavigationDropdown = ref(false);
                     class="cursor-pointer bg-orange-300 p-[5px] px-2 rounded-r-md"
                 >
                     <MagnifyIcon :size="30" />
+                </div>
+            </div>
+
+            <div class="flex">
+                <div
+                    class="h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer"
+                >
+                    <div class="flex items-center justify-center mt-2.5 px-1">
+                        <img
+                            class="mb-3 mr-1"
+                            width="23"
+                            src="/images/flags/US.png"
+                            alt=""
+                        />
+                        <div
+                            class="text-[15px] text-white -mt-2 -mr-0.5 font-extrabold"
+                        >
+                            EN
+                        </div>
+                        <MenuDownIcon
+                            fillColor="#c2c2c2"
+                            :size="20"
+                            class="-mr-4 -mt-1.5 pr-1"
+                        />
+                    </div>
+                </div>
+
+                <div
+                    class="h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer"
+                >
+                    <div class="flex items-center justify-center">
+                        <div>
+                            <div class="text-[12px] text-white font-extrabold">
+                                Hello,
+                                <span>John</span>
+                                <span>sign in</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div
+                                    class="text-[15px] text-white -mt-1.5 font-extrabold"
+                                >
+                                    Account & List
+                                </div>
+                                <MenuDownIcon
+                                    fillColor="#c2c2c2"
+                                    :size="20"
+                                    class="-mr-4 -mt-1 pr-1"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer"
+            >
+                <div class="flex items-center justify-center">
+                    <div>
+                        <div class="text-[12px] text-white font-extrabold">
+                            Returns
+                        </div>
+                        <div class="flex items-center">
+                            <div
+                                class="text-[15px] text-white -mt-1.5 font-extrabold"
+                            >
+                                & Orders
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="relative h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer"
+            >
+                <span
+                    class="absolute text-center right-[21px] w-[14px] -top-0 rounded-full text-[20px]"
+                >
+                    <div
+                        class="text-orange-400 font-extrabold bg-gray-900 h-[16px]"
+                    >
+                        0
+                    </div>
+                </span>
+                <div class="flex items-center justify-center">
+                    <CartMinusIcon
+                        fillColor="#FCFCFC"
+                        :size="40"
+                        class="-mt-0.5"
+                    />
                 </div>
             </div>
         </div>
