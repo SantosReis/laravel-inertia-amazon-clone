@@ -11,10 +11,11 @@ import { Carousel, Navigation, Slide } from "vue3-carousel";
 
     <AuthenticatedLayout>
         <Carousel :items-to-show="1" :wrap-around="true">
-            <Slide v-for="slide in 10" :key="slide">
+            <Slide v-for="slide in 6" :key="slide">
                 <div class="carousel__item">
                     <img
-                        src="https://placehold.co/3000x1200/000000/FFFFFF.png"
+                        id="slider"
+                        :src="`images/carousel/slide${slide}.jpg`"
                         alt=""
                     />
                 </div>

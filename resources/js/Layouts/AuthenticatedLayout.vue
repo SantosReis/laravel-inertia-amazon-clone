@@ -11,10 +11,22 @@ import CloseIcon from "vue-material-design-icons/Close.vue";
 import ChevronRightIcon from "vue-material-design-icons/ChevronRight.vue";
 
 let showMenu = ref(false);
+let accountAndList = ref(false);
+
+const accountAndListFunc = (bool) => {
+    setTimeout(() => {
+        accountAndList.value = bool;
+    }, 150);
+};
 </script>
 
 <template>
     <div class="min-w-[1150px] bg-gray-100 h-full">
+        <div
+            v-if="accountAndList"
+            class="top-0 z-20 fixed w-full h-full bg-black bg-opacity-70"
+        ></div>
+
         <div
             class="flex items-center bg-gray-900 h-[60px] py-2 fixed z-50 min-w-[1150px] w-full"
         >
@@ -97,6 +109,8 @@ let showMenu = ref(false);
                 </div>
 
                 <div
+                    @mouseenter="accountAndListFunc(true)"
+                    @mouseleave="accountAndListFunc(false)"
                     class="h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer"
                 >
                     <div class="flex items-center justify-center">
@@ -117,6 +131,85 @@ let showMenu = ref(false);
                                     :size="20"
                                     class="-mr-4 -mt-1 pr-1"
                                 />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        v-if="accountAndList"
+                        class="bg-white absolute z-50 top-[56px] -ml-[230px] w-[480px] rounded-sm px-6"
+                    >
+                        <div>
+                            <div
+                                class="flex items-center justify-between py-2.5 border-b"
+                            >
+                                <div class="text-smp-2">
+                                    Who's shopping? Select a profile.
+                                </div>
+                                <div
+                                    class="flex items-center text-sm font-bold text-teal-600 hover:text-red-600 hover:underline"
+                                >
+                                    Manage profile
+                                    <ChevronRightIcon
+                                        :size="20"
+                                        fillColor="#808080"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="flex">
+                                <div class="w-1/2 border-r">
+                                    <div class="pb-3">
+                                        <div class="font-extrabold pt-3">
+                                            Your List
+                                        </div>
+                                        <div
+                                            class="text-sm hover:text-red-600 hover:underline pt-3"
+                                        >
+                                            Create a list
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-1/2 ml-5">
+                                    <div class="pb-3">
+                                        <div class="font-extrabold pt-3">
+                                            Your Account
+                                        </div>
+                                        <Link
+                                            :href="route('profile.edit')"
+                                            class="text-sm block hover:text-red-600 hover:underline pt-3"
+                                        >
+                                            Account
+                                        </Link>
+                                        <Link
+                                            :href="route('logout')"
+                                            method="post"
+                                            as="button"
+                                            class="text-sm block hover:text-red-600 hover:underline pt-3"
+                                        >
+                                            Sign Out
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 text-center">
+                            <div class="p-4 text-center"></div>
+                            <Link
+                                :href="route('login')"
+                                class="text-center items-center px-20 py-1.5 bg-[#fcba1f] border border-gray-600 rounded-sm text-sm font-extrabold text-black"
+                            >
+                                Sign in
+                            </Link>
+                            <div class="text-sm pt-4">
+                                New customer?
+                                <Link
+                                    :href="route('register')"
+                                    class="text-blue-700 hover:text-red-700"
+                                >
+                                    Start here.
+                                </Link>
                             </div>
                         </div>
                     </div>
