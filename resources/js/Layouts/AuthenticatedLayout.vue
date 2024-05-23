@@ -6,8 +6,11 @@ import MenuDownIcon from "vue-material-design-icons/MenuDown.vue";
 import MagnifyIcon from "vue-material-design-icons/Magnify.vue";
 import CartMinusIcon from "vue-material-design-icons/CartMinus.vue";
 import MenuIcon from "vue-material-design-icons/Menu.vue";
+import AccountCircleIcon from "vue-material-design-icons/AccountCircle.vue";
+import CloseIcon from "vue-material-design-icons/Close.vue";
+import ChevronRightIcon from "vue-material-design-icons/ChevronRight.vue";
 
-const showingNavigationDropdown = ref(false);
+let showMenu = ref(false);
 </script>
 
 <template>
@@ -281,88 +284,142 @@ const showingNavigationDropdown = ref(false);
                 </div>
             </div>
         </div>
+
+        <footer class="bg-[#232F3E]">
+            <div
+                class="bg-[#37475A] hover:bg-gray-600 w-full p-3.5 cursor-pointer text-white font-extrabold text-center"
+            >
+                Back to top
+            </div>
+            <div
+                class="flex items-stretch justify-between max-w-[1000px] mx-auto p-10 text-white"
+            >
+                <ul>
+                    <li class="font-extrabold text-lg">Get to Know Us</li>
+                    <li class="hover:underline cursor-pointer">Careers</li>
+                    <li class="hover:underline cursor-pointer">About Amazon</li>
+                    <li class="hover:underline cursor-pointer">
+                        Investor Relations
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Amazon Devices
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Amazon Science
+                    </li>
+                </ul>
+
+                <ul>
+                    <li class="font-extrabold text-lg">Make Money with Us</li>
+                    <li class="hover:underline cursor-pointer">
+                        Sell products on Amazon
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Sell on Amazon Business
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Sell apps on Amazon
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Become an Affiliate
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Advertise Your Products
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Self-Publish with Us
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Host an Amazon Hub
+                    </li>
+                </ul>
+
+                <ul>
+                    <li class="font-extrabold text-lg">Get to Know Us</li>
+                    <li class="hover:underline cursor-pointer">Careers</li>
+                    <li class="hover:underline cursor-pointer">About Amazon</li>
+                    <li class="hover:underline cursor-pointer">
+                        Investor Relations
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Amazon Devices
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Amazon Science
+                    </li>
+                </ul>
+
+                <ul>
+                    <li class="font-extrabold text-lg">Make Money with Us</li>
+                    <li class="hover:underline cursor-pointer">
+                        Sell products on Amazon
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Sell on Amazon Business
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Sell apps on Amazon
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Become an Affiliate
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Advertise Your Products
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Self-Publish with Us
+                    </li>
+                    <li class="hover:underline cursor-pointer">
+                        Host an Amazon Hub
+                    </li>
+                </ul>
+            </div>
+        </footer>
     </div>
 
-    <footer class="bg-[#232F3E]">
+    <div
+        v-if="showMenu"
+        class="top-0 z-50 fixed w-full h-full bg-black bg-opacity-70"
+        :class="[
+            showMenu ? 'animate__animated animate__fadeIn animate__faster' : '',
+        ]"
+    >
+        <CloseIcon
+            @click="showMenu = false"
+            :size="30"
+            fillColor="#DCDCDC"
+            class="ml-2.5 mt-3.5 left-80 cursor-pointer fixed z-50"
+            :class="[
+                showMenu
+                    ? 'animate__animated animate__fadeIn animate__faster'
+                    : '',
+            ]"
+        />
+
         <div
-            class="bg-[#37475A] hover:bg-gray-600 w-full p-3.5 cursor-pointer text-white font-extrabold text-center"
+            class="w-80 h-full bg-white"
+            :class="[
+                showMenu
+                    ? 'animate__animated animate__slideInLeft animate__faster'
+                    : '',
+            ]"
         >
-            Back to top
+            <div
+                class="bg-[#232f3e] font-extrabold text-[18px] flex items-center p-2 text-white pl-7"
+            >
+                <span>Hello, Sign in</span>
+            </div>
+
+            <div
+                class="font-extrabold text-[16px] pt-3 pb-1 pl-6 pr-3 text-black"
+            >
+                Shop By Department
+            </div>
+
+            <div class="hover:bg-gray-200 pl-6 pr-3">
+                Computers
+                <ChevronRightIcon :size="20" fillColor="#808080" />
+            </div>
         </div>
-        <div
-            class="flex items-stretch justify-between max-w-[1000px] mx-auto p-10 text-white"
-        >
-            <ul>
-                <li class="font-extrabold text-lg">Get to Know Us</li>
-                <li class="hover:underline cursor-pointer">Careers</li>
-                <li class="hover:underline cursor-pointer">About Amazon</li>
-                <li class="hover:underline cursor-pointer">
-                    Investor Relations
-                </li>
-                <li class="hover:underline cursor-pointer">Amazon Devices</li>
-                <li class="hover:underline cursor-pointer">Amazon Science</li>
-            </ul>
-
-            <ul>
-                <li class="font-extrabold text-lg">Make Money with Us</li>
-                <li class="hover:underline cursor-pointer">
-                    Sell products on Amazon
-                </li>
-                <li class="hover:underline cursor-pointer">
-                    Sell on Amazon Business
-                </li>
-                <li class="hover:underline cursor-pointer">
-                    Sell apps on Amazon
-                </li>
-                <li class="hover:underline cursor-pointer">
-                    Become an Affiliate
-                </li>
-                <li class="hover:underline cursor-pointer">
-                    Advertise Your Products
-                </li>
-                <li class="hover:underline cursor-pointer">
-                    Self-Publish with Us
-                </li>
-                <li class="hover:underline cursor-pointer">
-                    Host an Amazon Hub
-                </li>
-            </ul>
-
-            <ul>
-                <li class="font-extrabold text-lg">Get to Know Us</li>
-                <li class="hover:underline cursor-pointer">Careers</li>
-                <li class="hover:underline cursor-pointer">About Amazon</li>
-                <li class="hover:underline cursor-pointer">
-                    Investor Relations
-                </li>
-                <li class="hover:underline cursor-pointer">Amazon Devices</li>
-                <li class="hover:underline cursor-pointer">Amazon Science</li>
-            </ul>
-
-            <ul>
-                <li class="font-extrabold text-lg">Make Money with Us</li>
-                <li class="hover:underline cursor-pointer">
-                    Sell products on Amazon
-                </li>
-                <li class="hover:underline cursor-pointer">
-                    Sell on Amazon Business
-                </li>
-                <li class="hover:underline cursor-pointer">
-                    Sell apps on Amazon
-                </li>
-                <li class="hover:underline cursor-pointer">
-                    Become an Affiliate
-                </li>
-                <li class="hover:underline cursor-pointer">
-                    Advertise Your Products
-                </li>
-                <li class="hover:underline cursor-pointer">
-                    Self-Publish with Us
-                </li>
-                <li class="hover:underline cursor-pointer">
-                    Host an Amazon Hub
-                </li>
-            </ul>
-        </div>
-    </footer>
+    </div>
 </template>
