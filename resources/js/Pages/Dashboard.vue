@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Navigation, Slide } from "vue3-carousel";
@@ -38,15 +38,19 @@ import { Carousel, Navigation, Slide } from "vue3-carousel";
             </div>
 
             <div class="grid grid-cols-3 m-4 z-10 relative">
-                <div class="p-1.5 flex">
-                    <div class="bg-white p-5">
+                <div
+                    class="p-1.5 flex"
+                    v-for="cat in $page.props.categories"
+                    :key="cat"
+                >
+                    <Link href="/" class="bg-white p-5">
                         <div class="text-2xl font-extrabold flex">
-                            Computers
+                            {{ cat.name }}
                         </div>
                         <div class="flex">
                             <img
                                 class="object-fill"
-                                src="https://placehold.co/1097x756.png"
+                                :src="`images/categories/${cat.id}.png`"
                                 alt=""
                             />
                         </div>
@@ -55,7 +59,7 @@ import { Carousel, Navigation, Slide } from "vue3-carousel";
                         >
                             See More
                         </div>
-                    </div>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -346,25 +346,24 @@ const accountAndListFunc = (bool) => {
                     Recommended based on your shopping trends
                 </div>
                 <div class="flex justify-center items-stretch">
-                    <div>
+                    <div
+                        v-for="product in $page.props.random_products"
+                        :key="product"
+                    >
                         <div class="p-4 text-center mx-auto">
                             <div class="w-[158px] h-[150px] overflow-hidden">
-                                <img
-                                    src="https://via.placeholder.com/158x150"
-                                />
+                                <img :src="product.image" />
                             </div>
-                            <a href="#">
-                                <div
-                                    class="w-[160px] text-[12px] py-2 text-teal-600 font-extrabold hover:text-red-600 cursor-pointer"
-                                >
-                                    Lorem ipsum
-                                </div>
-                            </a>
+                            <div
+                                class="w-[160px] text-[12px] py-2 text-teal-600 font-extrabold hover:text-red-600 cursor-pointer"
+                            >
+                                {{ product.title.substring(0, 40) }}...
+                            </div>
                             <div class="flex justify-start">
                                 <div
                                     class="text-xs font-extrabold text-red-600 w-full text-left"
                                 >
-                                    99.99
+                                    ${{ product.price }}
                                 </div>
                                 <img
                                     width="50"
@@ -509,9 +508,16 @@ const accountAndListFunc = (bool) => {
                 Shop By Department
             </div>
 
-            <div class="hover:bg-gray-200 pl-6 pr-3">
-                Computers
-                <ChevronRightIcon :size="20" fillColor="#808080" />
+            <div v-for="cat in $page.props.categories" :key="cat">
+                <div class="hover:bg-gray-200 pl-6 pr-3">
+                    <Link
+                        href="/"
+                        class="py-2.5 text-[13px] text-black flex justify-between items-center hover:bg-gray-200 cursor-pointer"
+                    >
+                        {{ cat.name }}
+                        <ChevronRightIcon :size="20" fillColor="#808080" />
+                    </Link>
+                </div>
             </div>
         </div>
     </div>
