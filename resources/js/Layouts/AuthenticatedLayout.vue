@@ -1,14 +1,14 @@
 <script setup>
-import { ref } from "vue";
-import { Link } from "@inertiajs/vue3";
-import MapMarkerOutlineIcon from "vue-material-design-icons/MapMarkerOutline.vue";
-import MenuDownIcon from "vue-material-design-icons/MenuDown.vue";
-import MagnifyIcon from "vue-material-design-icons/Magnify.vue";
-import CartMinusIcon from "vue-material-design-icons/CartMinus.vue";
-import MenuIcon from "vue-material-design-icons/Menu.vue";
-import AccountCircleIcon from "vue-material-design-icons/AccountCircle.vue";
-import CloseIcon from "vue-material-design-icons/Close.vue";
-import ChevronRightIcon from "vue-material-design-icons/ChevronRight.vue";
+import { ref } from 'vue';
+import { Link } from '@inertiajs/vue3';
+import MapMarkerOutlineIcon from 'vue-material-design-icons/MapMarkerOutline.vue';
+import MenuDownIcon from 'vue-material-design-icons/MenuDown.vue';
+import MagnifyIcon from 'vue-material-design-icons/Magnify.vue';
+import CartMinusIcon from 'vue-material-design-icons/CartMinus.vue';
+import MenuIcon from 'vue-material-design-icons/Menu.vue';
+import AccountCircleIcon from 'vue-material-design-icons/AccountCircle.vue';
+import CloseIcon from 'vue-material-design-icons/Close.vue';
+import ChevronRightIcon from 'vue-material-design-icons/ChevronRight.vue';
 
 let showMenu = ref(false);
 let accountAndList = ref(false);
@@ -42,24 +42,35 @@ const accountAndListFunc = (bool) => {
             <div
                 class="text-white h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer"
             >
-                <div class="flex items-center justify-center">
-                    <MapMarkerOutlineIcon
-                        class="pt-2 -ml-1"
-                        fillColor="#f5f5f5"
-                    />
+                <Link :href="route('address.index')">
+                    <div class="flex items-center justify-center">
+                        <MapMarkerOutlineIcon
+                            class="pt-2 -ml-1"
+                            fillColor="#f5f5f5"
+                        />
 
-                    <div>
-                        <div class="text-[13px] text-gray-300 font-extrabold">
-                            <div>Delivery to John</div>
-                        </div>
+                        <div>
+                            <div
+                                class="text-[13px] text-gray-300 font-extrabold"
+                            >
+                                <div>Delivery to NAME</div>
+                            </div>
 
-                        <div
-                            class="text-[15px] text-white -mt-1.5 font-extrabold"
-                        >
-                            <div>London SW2 SW2</div>
+                            <div
+                                v-if="true"
+                                class="text-[15px] text-white -mt-1.5 font-extrabold"
+                            >
+                                <div>CITY POSTCODE</div>
+                            </div>
+                            <div
+                                v-else
+                                class="text-[15px] text-white -mt-1.5 font-extrabold"
+                            >
+                                <div>Add address</div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </Link>
             </div>
 
             <div class="flex grow items-center h-[45px] px-1">

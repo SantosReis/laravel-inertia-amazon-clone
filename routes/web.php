@@ -3,6 +3,7 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
@@ -32,6 +33,7 @@ Route::get('/', function () {
 })->name('dashboard');
 Route::get('/category/{id}', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/product/{id}', [ProductController::class, 'index'])->name('product.index');
+Route::get('/address', [AddressController::class, 'index'])->name('address.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
