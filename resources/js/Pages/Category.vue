@@ -1,6 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import ProductComponent from '@/Components/ProductComponent.vue';
 </script>
 
 <template>
@@ -31,7 +32,7 @@ import { Head } from '@inertiajs/vue3';
                 :key="product"
                 class="m-1"
             >
-                PRODUCT
+                <ProductComponent :product="product" />
             </div>
         </div>
     </AuthenticatedLayout>
