@@ -6,6 +6,22 @@ import MapMarkerOutlineIcon from 'vue-material-design-icons/MapMarkerOutline.vue
 import PlusIcon from 'vue-material-design-icons/Plus.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
+
+const form = useForm({
+    country: 'United Kingdom',
+    first_name: usePage().props.auth.user.first_name,
+    last_name: usePage().props.auth.user.last_name,
+    addr1: '',
+    addr2: '',
+    city: '',
+    postcode: '',
+});
+
+const submit = () => {
+    form.post(route('address_options.store'), {
+        onFinish: () => route('address.index'),
+    });
+};
 </script>
 <template>
     <Head title="Address" />
@@ -19,6 +35,7 @@ import TextInput from '@/Components/TextInput.vue';
             <form @submit.prevent="submit">
                 <div class="text-[15px] -mb-1.5 font-extrabold">Country</div>
                 <select
+                    v-model="form.country"
                     class="w-full border-gray-300 rounded-lg shadow-md py-1 bg-gray-200 hover:bg-gray-300 cursor-pointer focus:border-orange-400 focus:ring-orange-400"
                     name="country"
                 >
@@ -33,19 +50,30 @@ import TextInput from '@/Components/TextInput.vue';
                 <div class="mt-4">
                     <InputLabel class="-mb-1.5" value="First name" />
 
-                    <TextInput type="text" class="mt-1 block w-full" required />
+                    <TextInput
+                        v-model="form.first_name"
+                        type="text"
+                        class="mt-1 block w-full"
+                        required
+                    />
                 </div>
 
                 <div class="mt-3">
                     <InputLabel class="-mb-1.5" value="Last name" />
 
-                    <TextInput type="text" class="mt-1 block w-full" required />
+                    <TextInput
+                        v-model="form.last_name"
+                        type="text"
+                        class="mt-1 block w-full"
+                        required
+                    />
                 </div>
 
                 <div class="mt-3">
                     <InputLabel class="-mb-1.5" value="Address" />
 
                     <TextInput
+                        v-model="form.addr1"
                         type="text"
                         class="mt-1 block w-full"
                         required
@@ -53,6 +81,7 @@ import TextInput from '@/Components/TextInput.vue';
                     />
 
                     <TextInput
+                        v-model="form.addr2"
                         type="text"
                         class="mt-1 block w-full"
                         required
@@ -66,6 +95,7 @@ import TextInput from '@/Components/TextInput.vue';
                             <InputLabel class="-mb-1.5" value="City" />
 
                             <TextInput
+                                v-model="form.city"
                                 type="text"
                                 class="mt-1 block w-full"
                                 required
@@ -77,6 +107,7 @@ import TextInput from '@/Components/TextInput.vue';
                             <InputLabel class="-mb-1.5" value="Postcode" />
 
                             <TextInput
+                                v-model="form.postcode"
                                 type="text"
                                 class="mt-1 block w-full"
                                 required
