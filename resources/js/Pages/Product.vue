@@ -39,11 +39,12 @@ const { product } = toRefs(props);
                         >
                             <Link
                                 v-if="$page.props.auth.user"
-                                href="/"
+                                :href="route('address.index')"
                                 class="flex items-center text-xs font-extrabold text-teal-700 hover:text-red-600 cursor-pointer"
                             >
                                 <MapMarkerOutlineIcon :size="17" /> Delivery to
-                                FIRST NAME - POSTCODE
+                                {{ $page.props.auth.user.first_name }} -
+                                {{ $page.props.auth.address.postcode }}
                             </Link>
                             <Link
                                 v-else

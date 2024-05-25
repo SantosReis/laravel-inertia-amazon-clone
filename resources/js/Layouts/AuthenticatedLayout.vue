@@ -42,7 +42,10 @@ const accountAndListFunc = (bool) => {
             <div
                 class="text-white h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer"
             >
-                <Link :href="route('address.index')">
+                <Link
+                    v-if="$page.props.auth.user"
+                    :href="route('address.index')"
+                >
                     <div class="flex items-center justify-center">
                         <MapMarkerOutlineIcon
                             class="pt-2 -ml-1"
@@ -53,14 +56,20 @@ const accountAndListFunc = (bool) => {
                             <div
                                 class="text-[13px] text-gray-300 font-extrabold"
                             >
-                                <div>Delivery to NAME</div>
+                                <div>
+                                    Delivery to
+                                    {{ $page.props.auth.user.first_name }}
+                                </div>
                             </div>
 
                             <div
-                                v-if="true"
+                                v-if="$page.props.auth.address"
                                 class="text-[15px] text-white -mt-1.5 font-extrabold"
                             >
-                                <div>CITY POSTCODE</div>
+                                <div>
+                                    {{ $page.props.auth.address.city }}
+                                    {{ $page.props.auth.address.postcode }}
+                                </div>
                             </div>
                             <div
                                 v-else
@@ -71,6 +80,23 @@ const accountAndListFunc = (bool) => {
                         </div>
                     </div>
                 </Link>
+
+                <div v-else class="flex items-center justify-center">
+                    <MapMarkerOutlineIcon
+                        class="pt-2 -ml-1"
+                        fillColor="#f5f5f5"
+                    />
+                    <div>
+                        <div class="text-[13px] text-gray-300 font-extrabold">
+                            <div>Hello</div>
+                            <div
+                                class="text-[15px] text-white -mt-1.5 font-extrabold"
+                            >
+                                Select your address
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="flex grow items-center h-[45px] px-1">
@@ -128,7 +154,9 @@ const accountAndListFunc = (bool) => {
                         <div>
                             <div class="text-[12px] text-white font-extrabold">
                                 Hello,
-                                <span>John</span>
+                                <span v-if="$page.props.auth.user">{{
+                                    $page.props.auth.user.first_name
+                                }}</span>
                                 <span>sign in</span>
                             </div>
                             <div class="flex items-center">
@@ -150,7 +178,7 @@ const accountAndListFunc = (bool) => {
                         v-if="accountAndList"
                         class="bg-white absolute z-50 top-[56px] -ml-[230px] w-[480px] rounded-sm px-6"
                     >
-                        <div>
+                        <div v-if="$page.props.auth.user">
                             <div
                                 class="flex items-center justify-between py-2.5 border-b"
                             >
@@ -205,7 +233,7 @@ const accountAndListFunc = (bool) => {
                             </div>
                         </div>
 
-                        <div class="p-4 text-center">
+                        <div v-else class="p-4 text-center">
                             <div class="p-4 text-center"></div>
                             <Link
                                 :href="route('login')"
@@ -365,11 +393,17 @@ const accountAndListFunc = (bool) => {
                             <div class="w-[158px] h-[150px] overflow-hidden">
                                 <img :src="product.image" />
                             </div>
-                            <div
-                                class="w-[160px] text-[12px] py-2 text-teal-600 font-extrabold hover:text-red-600 cursor-pointer"
+                            <Link
+                                :href="
+                                    route('product.index', { id: product.id })
+                                "
                             >
-                                {{ product.title.substring(0, 40) }}...
-                            </div>
+                                <div
+                                    class="w-[160px] text-[12px] py-2 text-teal-600 font-extrabold hover:text-red-600 cursor-pointer"
+                                >
+                                    {{ product.title.substring(0, 40) }}...
+                                </div>
+                            </Link>
                             <div class="flex justify-start">
                                 <div
                                     class="text-xs font-extrabold text-red-600 w-full text-left"
