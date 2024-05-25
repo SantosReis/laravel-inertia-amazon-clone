@@ -75,7 +75,7 @@ class CheckoutController extends Controller
         $order->payment_intent = $request['payment_intent'];
         $order->save();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('checkout_success.index');
     }
 
 }
