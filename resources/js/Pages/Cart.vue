@@ -113,9 +113,10 @@ const totalWithoutDot = () => {
                             : 'bg-yellow-400 hover:bg-yellow-500'
                     "
                     as="button"
+                    method="post"
                     :href="
                         $page.props.auth.user !== null
-                            ? route('checkout.index', {
+                            ? route('checkout.store', {
                                   total: totalWithoutDot(),
                                   total_decimal: total,
                                   items: cart,

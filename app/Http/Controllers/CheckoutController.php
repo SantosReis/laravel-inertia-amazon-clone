@@ -20,7 +20,7 @@ class CheckoutController extends Controller
 
         $order = Order::where('user_id', '=', auth()->user()->id)->where('payment_intent', null)->first();
         $intent = $stripe->paymentIntents->create([
-            'amount' => 1099,
+            'amount' => (int) $order->total,
             'currency' => 'usd',
             'payment_method_types' => ['card'],
         ]);
@@ -74,6 +74,8 @@ class CheckoutController extends Controller
             ->first();
         $order->payment_intent = $request['payment_intent'];
         $order->save();
+
+        return redirect()->route('dashboard');
     }
 
 }

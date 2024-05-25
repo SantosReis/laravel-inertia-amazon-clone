@@ -177,14 +177,19 @@ const totalWithoutDot = () => {
                         class="flex justify-between text-xl text-red-700 font-extrabold border-y border-y-gray-300 my-3 p-2"
                     >
                         <div>Order total:</div>
-                        <div>USD: 0000</div>
+                        <div v-if="order">USD: {{ order.total_decimal }}</div>
                     </div>
 
                     <button
                         id="submit"
                         class="w-full bg-yellow-400 hover:bg-yellow-500 rounded-md text-sm font-extrabold p-2"
                     >
-                        <div id="button-text">Place your order in USD</div>
+                        <div v-if="isProcessing" id="button-text">
+                            Processing...
+                        </div>
+                        <div v-else id="button-text">
+                            Place your order in USD
+                        </div>
                     </button>
 
                     <p
@@ -198,8 +203,20 @@ const totalWithoutDot = () => {
         <div class="w-[1200px] mx-auto text-xl font-bold pb-2 underline">
             Items
         </div>
-        <div class="w-[1200px] mx-auto">
-            <div class="flex items-center py-1">PROD DETAILS HERE</div>
+        <div
+            class="w-[1200px] mx-auto"
+            v-for="prod in JSON.parse(order.items)"
+            :key="prod"
+        >
+            <div class="flex items-center py-1">
+                <img width="60" :src="prod.image" class="rounded-md" alt="" />
+                <div class="ml-4">
+                    <div class="text-lg font-semibold">{{ prod.title }}</div>
+                    <div class="font-semibold text-red-700">
+                        ${{ prod.price }}
+                    </div>
+                </div>
+            </div>
         </div>
     </AuthenticatedLayout>
 </template>
