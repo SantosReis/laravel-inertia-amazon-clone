@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\Order;
 use Inertia\Response;
+use App\Mail\OrderShipped;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -74,6 +76,8 @@ class CheckoutController extends Controller
             ->first();
         $order->payment_intent = $request['payment_intent'];
         $order->save();
+
+        Mail::to($request->user())->send(new OrderShipped($order));
 
         return redirect()->route('checkout_success.index');
     }
