@@ -60,7 +60,7 @@ onMounted(() => {
 
     setTimeout(() => {
         router.post('/checkout', {
-            total: totalWithoutDot(),
+            // total: totalWithoutDot(),
             total_decimal: total,
             items: cart.value,
         });
@@ -119,27 +119,28 @@ const loading = (isLoading) => {
     }
 };
 
-const total = computed(() => {
-    let total = 0;
-    cart.value.forEach((c) => {
-        total += c.price;
-    });
-    if (total > 0) {
-        return total.toFixed(2);
-    }
-    return 0;
-});
+// const total = computed(() => {
+//     let total = 0;
+//     cart.value.forEach((c) => {
+//         total += c.price;
+//     });
+//     if (total > 0) {
+//         return total.toFixed(2);
+//     }
+//     return 0;
+// });
 
-const totalWithoutDot = () => {
-    if (total.value > 0) {
-        let num = String(total.value).split('.').join('');
-        return Number(num);
-    }
-    return 0;
-};
+// const totalWithoutDot = () => {
+//     if (total.value > 0) {
+//         let num = String(total.value).split('.').join('');
+//         return Number(num);
+//     }
+//     return 0;
+// };
 </script>
 
 <template>
+    {{ intent }}
     <Head title="Checkout" />
 
     <AuthenticatedLayout>
@@ -171,6 +172,8 @@ const totalWithoutDot = () => {
 
             <div class="w-4/12 border border-gray-400 rounded-md py-4 px-2">
                 <form id="payment-form">
+                    <div id="card-element"></div>
+
                     <div
                         class="flex justify-between text-xl text-red-700 font-extrabold border-y border-y-gray-300 my-3 p-2"
                     >

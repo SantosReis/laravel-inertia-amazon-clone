@@ -15,7 +15,17 @@ class CheckoutController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Checkout');
+        $stripe = new \Stripe\StripeClient(env('VITE_STRIPE_SECRET'));
+
+        $intent = $stripe->paymentIntents->create([
+            'amount' => 1099,
+            'currency' => 'usd',
+            'payment_method_types' => ['card'],
+        ]);
+
+        return Inertia::render('Checkout', [
+            'intent' => $intent,
+        ]);
     }
 
     /**
