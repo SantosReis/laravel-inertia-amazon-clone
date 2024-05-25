@@ -278,7 +278,7 @@ const accountAndListFunc = (bool) => {
             </div>
 
             <Link
-                href="r/"
+                :href="route('cart.index')"
                 class="relative h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer"
             >
                 <span
