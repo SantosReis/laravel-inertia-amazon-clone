@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
-use Illuminate\Http\Request;
+use App\Models\Order;
 use Inertia\Response;
+use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
@@ -17,6 +18,7 @@ class CheckoutController extends Controller
     {
         $stripe = new \Stripe\StripeClient(env('VITE_STRIPE_SECRET'));
 
+        $order = Order::where('user_id', '=', auth()->user()->id)->where('payment_intent', null)->first();
         $intent = $stripe->paymentIntents->create([
             'amount' => 1099,
             'currency' => 'usd',
@@ -25,17 +27,8 @@ class CheckoutController extends Controller
 
         return Inertia::render('Checkout', [
             'intent' => $intent,
+            'order' => $order
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -46,29 +39,25 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $res = Order::where('user_id', '=', auth()->user()->id)
+            ->where('payment_intent', null)
+            ->first();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        if (!is_null($res)) {
+            $res->total = $request->total;
+            $res->total_decimal = $request->total_decimal;
+            $res->items = json_encode($request->items);
+            $res->save();
+        } else {
+            $order = new Order();
+            $order->user_id = auth()->user()->id;
+            $order->total = $request->total;
+            $order->total_decimal = $request->total_decimal;
+            $order->items = json_encode($request->items);
+            $order->save();
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return redirect()->route('checkout.index');
     }
 
     /**
@@ -78,19 +67,13 @@ class CheckoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $order = Order::where('user_id', '=', auth()->user()->id)
+            ->where('payment_intent', null)
+            ->first();
+        $order->payment_intent = $request['payment_intent'];
+        $order->save();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

@@ -60,8 +60,8 @@ onMounted(() => {
 
     setTimeout(() => {
         router.post('/checkout', {
-            // total: totalWithoutDot(),
-            total_decimal: total,
+            total: totalWithoutDot(),
+            total_decimal: total.value,
             items: cart.value,
         });
     }, 10);
@@ -119,28 +119,27 @@ const loading = (isLoading) => {
     }
 };
 
-// const total = computed(() => {
-//     let total = 0;
-//     cart.value.forEach((c) => {
-//         total += c.price;
-//     });
-//     if (total > 0) {
-//         return total.toFixed(2);
-//     }
-//     return 0;
-// });
+const total = computed(() => {
+    let total = 0;
+    cart.value.forEach((c) => {
+        total += c.price;
+    });
+    if (total > 0) {
+        return total.toFixed(2);
+    }
+    return 0;
+});
 
-// const totalWithoutDot = () => {
-//     if (total.value > 0) {
-//         let num = String(total.value).split('.').join('');
-//         return Number(num);
-//     }
-//     return 0;
-// };
+const totalWithoutDot = () => {
+    if (total.value > 0) {
+        let num = String(total.value).split('.').join('');
+        return Number(num);
+    }
+    return 0;
+};
 </script>
 
 <template>
-    {{ intent }}
     <Head title="Checkout" />
 
     <AuthenticatedLayout>
