@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddressOptionsStoreRequest;
+use App\Models\Address;
 use Inertia\Inertia;
 use Inertia\Response;
-use App\Models\Address;
-use App\Http\Requests\AddressOptionsStoreRequest;
 
 class AddressOptionsController extends Controller
 {

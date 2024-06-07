@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Inertia\Inertia;
 use Inertia\Response;
-use App\Models\Product;
-use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -18,7 +18,7 @@ class CategoryController extends Controller
     {
         return Inertia::render('Category', [
             'category_name' => Category::find($id),
-            'category_by_id' => Product::where('category', $id)->get()
+            'category_by_id' => Product::where('category', $id)->get(),
         ]);
     }
 }

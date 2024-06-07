@@ -3,11 +3,11 @@
 namespace App\Http\Middleware;
 
 use App\Models\Address;
-use App\Models\Product;
-use Inertia\Middleware;
 use App\Models\Category;
-use Tightenco\Ziggy\Ziggy;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Inertia\Middleware;
+use Tightenco\Ziggy\Ziggy;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -21,7 +21,7 @@ class HandleInertiaRequests extends Middleware
     /**
      * Determine the current asset version.
      */
-    public function version(Request $request): string|null
+    public function version(Request $request): ?string
     {
         return parent::version($request);
     }
@@ -36,7 +36,7 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => auth()->check() ? auth()->user() : null,
-                'address' => auth()->check() && !is_null(Address::where('user_id', auth()->user()->id)->first()) ? Address::where('user_id', auth()->user()->id)->first() : null,
+                'address' => auth()->check() && ! is_null(Address::where('user_id', auth()->user()->id)->first()) ? Address::where('user_id', auth()->user()->id)->first() : null,
             ],
             'categories' => Category::all(),
             'random_products' => Product::inRandomOrder()->limit(8)->get(),

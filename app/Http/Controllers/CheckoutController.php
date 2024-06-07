@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
-use App\Models\Order;
-use Inertia\Response;
 use App\Mail\OrderShipped;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class CheckoutController extends Controller
 {
@@ -29,14 +29,13 @@ class CheckoutController extends Controller
 
         return Inertia::render('Checkout', [
             'intent' => $intent,
-            'order' => $order
+            'order' => $order,
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -45,7 +44,7 @@ class CheckoutController extends Controller
             ->where('payment_intent', null)
             ->first();
 
-        if (!is_null($res)) {
+        if (! is_null($res)) {
             $res->total = $request->total;
             $res->total_decimal = $request->total_decimal;
             $res->items = json_encode($request->items);
@@ -65,7 +64,6 @@ class CheckoutController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -81,5 +79,4 @@ class CheckoutController extends Controller
 
         return redirect()->route('checkout_success.index');
     }
-
 }

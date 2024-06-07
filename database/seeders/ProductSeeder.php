@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ProductSeeder extends Seeder
 {
@@ -24,7 +23,7 @@ class ProductSeeder extends Seeder
             'price' => 899.99,
             'category' => 1,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -34,7 +33,7 @@ class ProductSeeder extends Seeder
             'price' => 89.59,
             'category' => 1,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -44,7 +43,7 @@ class ProductSeeder extends Seeder
             'price' => 1237.50,
             'category' => 1,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -54,7 +53,7 @@ class ProductSeeder extends Seeder
             'price' => 1950.98,
             'category' => 1,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -64,7 +63,7 @@ class ProductSeeder extends Seeder
             'price' => 999.99,
             'category' => 1,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -74,7 +73,7 @@ class ProductSeeder extends Seeder
             'price' => 789.99,
             'category' => 1,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -84,7 +83,7 @@ class ProductSeeder extends Seeder
             'price' => 789.99,
             'category' => 1,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         // Home
@@ -95,7 +94,7 @@ class ProductSeeder extends Seeder
             'price' => 24.56,
             'category' => 2,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -105,7 +104,7 @@ class ProductSeeder extends Seeder
             'price' => 29.95,
             'category' => 2,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -115,7 +114,7 @@ class ProductSeeder extends Seeder
             'price' => 119.99,
             'category' => 2,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -125,7 +124,7 @@ class ProductSeeder extends Seeder
             'price' => 12.29,
             'category' => 2,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -135,7 +134,7 @@ class ProductSeeder extends Seeder
             'price' => 17.99,
             'category' => 2,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         // Men's Fashion
@@ -146,7 +145,7 @@ class ProductSeeder extends Seeder
             'price' => 135.99,
             'category' => 3,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -156,7 +155,7 @@ class ProductSeeder extends Seeder
             'price' => 135.99,
             'category' => 3,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         // Women's Fashion
@@ -167,7 +166,7 @@ class ProductSeeder extends Seeder
             'price' => 85.95,
             'category' => 4,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -177,7 +176,7 @@ class ProductSeeder extends Seeder
             'price' => 85.95,
             'category' => 4,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -187,7 +186,7 @@ class ProductSeeder extends Seeder
             'price' => 109.95,
             'category' => 4,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -197,7 +196,7 @@ class ProductSeeder extends Seeder
             'price' => 135.99,
             'category' => 4,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         // Pets
@@ -208,7 +207,7 @@ class ProductSeeder extends Seeder
             'price' => 2449.99,
             'category' => 5,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -218,7 +217,7 @@ class ProductSeeder extends Seeder
             'price' => 2449.99,
             'category' => 5,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -228,7 +227,7 @@ class ProductSeeder extends Seeder
             'price' => 2449.99,
             'category' => 5,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -238,7 +237,7 @@ class ProductSeeder extends Seeder
             'price' => 59.99,
             'category' => 5,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -248,7 +247,7 @@ class ProductSeeder extends Seeder
             'price' => 3999.99,
             'category' => 5,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         // Arts & Crafts
@@ -259,7 +258,7 @@ class ProductSeeder extends Seeder
             'price' => 74.99,
             'category' => 6,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -269,7 +268,7 @@ class ProductSeeder extends Seeder
             'price' => 34.99,
             'category' => 6,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('products')->insert([
@@ -279,7 +278,7 @@ class ProductSeeder extends Seeder
             'price' => 29.99,
             'category' => 6,
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
-use Inertia\Inertia;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Application;
 use App\Http\Controllers\AddressController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AddressOptionsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\AddressOptionsController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +33,9 @@ use App\Http\Controllers\AddressOptionsController;
 Route::get('/', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
-Route::get('/cart', function () { return Inertia::render('Cart'); })->name('cart.index');
+Route::get('/cart', function () {
+    return Inertia::render('Cart');
+})->name('cart.index');
 Route::get('/category/{id}', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/product/{id}', [ProductController::class, 'index'])->name('product.index');
 Route::get('/address', [AddressController::class, 'index'])->name('address.index');
@@ -51,7 +53,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
     Route::put('/checkout', [CheckoutController::class, 'update'])->name('checkout.update');
 
-    Route::get('/checkout_success', function () { return Inertia::render('CheckoutSuccess'); })->name('checkout_success.index');
+    Route::get('/checkout_success', function () {
+        return Inertia::render('CheckoutSuccess');
+    })->name('checkout_success.index');
 });
 
 require __DIR__.'/auth.php';
