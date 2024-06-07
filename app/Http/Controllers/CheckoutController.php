@@ -50,7 +50,7 @@ class CheckoutController extends Controller
             $res->items = json_encode($request->items);
             $res->save();
         } else {
-            $order = new Order();
+            $order = new Order;
             $order->user_id = auth()->user()->id;
             $order->total = $request->total;
             $order->total_decimal = $request->total_decimal;
