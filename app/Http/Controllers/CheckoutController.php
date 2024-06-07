@@ -14,7 +14,7 @@ class CheckoutController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response;
      */
     public function index(): Response
     {
@@ -36,7 +36,7 @@ class CheckoutController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse;
      */
     public function store(Request $request)
     {
@@ -64,8 +64,7 @@ class CheckoutController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse;
      */
     public function update(Request $request)
     {

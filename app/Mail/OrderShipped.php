@@ -13,7 +13,7 @@ class OrderShipped extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $order;
+    public object $order;
 
     /**
      * Create a new message instance.
@@ -57,7 +57,7 @@ class OrderShipped extends Mailable
     /**
      * Get the attachments for the message.
      *
-     * @return array
+     * @return array<object>
      */
     public function attachments()
     {

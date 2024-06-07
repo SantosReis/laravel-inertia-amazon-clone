@@ -12,7 +12,7 @@ class AddressOptionsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response;
      */
     public function index(): Response
     {
@@ -22,8 +22,8 @@ class AddressOptionsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \App\Http\Requests\AddressOptionsStoreRequest  $request;
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse;
      */
     public function store(AddressOptionsStoreRequest $request)
     {
@@ -49,7 +49,7 @@ class AddressOptionsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|null;
      */
     public function destroy($id)
     {
